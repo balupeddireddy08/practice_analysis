@@ -1,0 +1,31 @@
+import time
+import requests
+
+def reverse_geocode(lat, lon, api_key):
+    url = f"https://us1.locationiq.com/v1/reverse.php?key={api_key}&lat={lat}&lon={lon}&format=json"
+    start_time = time.time()  # Record the starting time
+    retry_delay = 1  # Start with a 1-second delay
+
+    while True:
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                data = response.json()
+                return data.get('display_name')
+
+            elif response.status_code == 429:
+                print(f"Rate limit exceeded for coordinates ({lat}, {lon}), retrying after {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                retry_delay = min(retry_delay * 2, 60)  # Exponential backoff, max 60 seconds
+
+            else:
+                print(f"Error: Received status code {response.status_code} for coordinates ({lat}, {lon})")
+                return None
+
+        except Exception as e:
+            print(f"Exception occurred for coordinates ({lat}, {lon}): {e}")
+        
+        # Check if the retry has taken longer than 1 hour (3600 seconds)
+        if time.time() - start_time > 3600:
+            print(f"Skipping coordinates ({lat}, {lon}) after 1 hour of retries.")
+            return None
