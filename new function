@@ -1,6 +1,14 @@
 import time
 import requests
 
+# Define the approximate latitude and longitude range for the continental US
+lat_min, lat_max = 25, 50
+lon_min, lon_max = -125, -75
+
+# Generate random latitude and longitude values
+latitudes = np.random.uniform(lat_min, lat_max, 100)
+longitudes = np.random.uniform(lon_min, lon_max, 100)
+
 def reverse_geocode(lat, lon, api_key):
     url = f"https://us1.locationiq.com/v1/reverse.php?key={api_key}&lat={lat}&lon={lon}&format=json"
     start_time = time.time()  # Record the starting time
