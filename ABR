@@ -1,2 +1,8 @@
-Reference for Architecture: https://aws.amazon.com/blogs/machine-learning/build-a-conversational-chatbot-using-different-llms-within-single-interface-part-1/
+Reference for Architecture: 
+https://aws.amazon.com/blogs/machine-learning/build-a-conversational-chatbot-using-different-llms-within-single-interface-part-1/
+https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/develop-a-fully-automated-chat-based-assistant-by-using-amazon-bedrock-agents-and-knowledge-bases.html
+https://aws.amazon.com/blogs/machine-learning/build-a-contextual-chatbot-application-using-knowledge-bases-for-amazon-bedrock/
 
+Using React User Interface -
+https://github.com/aws-samples/aws-bedrock-with-rag-and-react
+https://community.aws/content/2gBw7uI9Oe9QKUytgqZguP8O284/add-generative-ai-to-a-javascript-web-app-2-0
